@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>娜绮丽</title>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta content="telephone=no" name="format-detection" />
+  <!-- html字号-->
+  <script type="text/javascript">
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          docEl.style.fontSize = 20 * (clientWidth / 150) + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+<!-- APP分享 start -->
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+<span style="display:none" id="right_btn_status">1</span>
+<span style="display:none" id="shareTitle"></span>
+<span style="display:none" id="shareImgurl"></span>
+<span style="display:none" id="shareUrl"></span>
+<span style="display:none" id="shareContent"></span>
+<span style="display:none" id="shareTimelineContent"></span>
+<!-- APP分享 end -->
+
+</html>
