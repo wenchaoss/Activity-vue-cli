@@ -23,6 +23,7 @@
       var self = this;
       this.ls_hash();
       $.post('/topic/naqili',{flag:1,url:window.location.href.split('#')[0].replace(/http:\/\/|https:\/\//g,'')},function(res){
+        $(".list").show()
         self.list = res.dataList;
         self.isApp = res.isApp;
         window.shareDateIndex = res.shareData;
@@ -204,6 +205,7 @@
       color: green;
       font-size: .36rem;
       font-weight: bold;
+      line-height: 1.3;
       margin: .1rem 0;
       background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#e474e1), to(#8e63c8));
       -webkit-background-clip: text;

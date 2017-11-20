@@ -217,6 +217,7 @@
       color: green;
       font-size: .6rem;
       font-weight: bold;
+      line-height: 1.3;
       margin: .2rem 0;
       background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#e474e1), to(#8e63c8));
       -webkit-background-clip: text;

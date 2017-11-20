@@ -9,13 +9,13 @@
             <a href="javaScript:void(0)" @click="gohash" class="c3"></a>
         </div>
         <div class="wrap"><img src="../assets/img/bg1_01n.jpg" alt=""></div>
-        <div class="wrap"><img src="../assets/img/bg1_02.jpg" alt=""></div>
+        <div class="wrap"><img src="../assets/img/bg1_02n.jpg" alt=""></div>
         <div class="wrap"><img src="../assets/img/bg1_03.jpg" alt="">
             <a href="javaScript:void(0)" @click="gohash" class="c1"></a>
             <a href="javaScript:void(0)" @click="gohash" class="c2"></a>
             <a href="javaScript:void(0)" @click="gohash" class="c3"></a>
         </div>
-        <div class="list">
+        <div class="list" style="display:none;">
             <ul>
               <li v-for="(v,k) in sortList" :key="v.id" class="item">
                     <div @click="godetail(v,$event)" >
