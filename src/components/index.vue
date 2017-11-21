@@ -1,21 +1,21 @@
 <template>
   <div class="container">
         <div class="fixtab wrap">
-            <img class="imgfix1" src="../assets/img/t1n.png"/>
-            <img class="imgfix2" src="../assets/img/t2n.png"/>
-            <img class="imgfix3" src="../assets/img/t3n.png"/>
+            <img class="imgfix1" src="../assets/img/s1_02.png"/>
+            <img class="imgfix2" src="../assets/img/s2_02.png"/>
+            <img class="imgfix3" src="../assets/img/s3_02.png"/>
             <a href="javaScript:void(0)" @click="gohash" class="c1"></a>
             <a href="javaScript:void(0)" @click="gohash" class="c2"></a>
             <a href="javaScript:void(0)" @click="gohash" class="c3"></a>
         </div>
         <div class="wrap"><img src="../assets/img/bg1_01n.jpg" alt=""></div>
         <div class="wrap"><img src="../assets/img/bg1_02n.jpg" alt=""></div>
-        <div class="wrap"><img src="../assets/img/bg1_03.jpg" alt="">
+        <div class="wrap"><img src="../assets/img/21.jpg" alt="">
             <a href="javaScript:void(0)" @click="gohash" class="c1"></a>
             <a href="javaScript:void(0)" @click="gohash" class="c2"></a>
             <a href="javaScript:void(0)" @click="gohash" class="c3"></a>
         </div>
-        <div class="list" style="display:none;">
+        <div class="list">
             <ul>
               <li v-for="(v,k) in sortList" :key="v.id" class="item">
                     <div @click="godetail(v,$event)" >
@@ -60,7 +60,7 @@ export default {
         height:0
     }
   },
-  props:['list','isApp'],
+  props:['list','isApp','useHashRout','isDev'],
   created() { 
 
   },
@@ -135,6 +135,10 @@ export default {
       },
       godetail: function(item,$event) {
           if($($event.target).hasClass("gohos_tar")){
+              return;
+          }
+          if(!this.useHashRout){
+              window.location.href = this.isDev + "/topic/naqili?#/share?id="+item.p_num;
               return;
           }
           let h = $(window).scrollTop()

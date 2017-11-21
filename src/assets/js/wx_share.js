@@ -7,21 +7,21 @@ export function setShare(shareDate) {
     $("#shareContent").html(shareDate.shareContent);
     $("#shareTimelineContent").html(shareDate.shareTitle);
     //APP分享
-    let status = $('#right_btn_status').html() || '',
+    var status = $('#right_btn_status').html() || '',
         shareTimelineContent = $('#shareTimelineContent').html() || '',
         shareContent = $('#shareContent').html() || '',
         shareImgurl = $('#shareImgurl').html() || '',
         shareTitle = $('#shareTitle').html() || '',
         shareUrl = $('#shareUrl').html() || '';
     function share(){
-        let shareConfig = {
+        var shareConfig = {
             "shareContent": shareContent,
             "shareImgurl": shareImgurl,
             "shareTitle": shareTitle,
             "shareUrl": shareUrl,
             "rightBtnStatus":status
         };
-        let sharCfg = JSON.stringify(shareConfig);
+        var sharCfg = JSON.stringify(shareConfig);
         try{
             window['SyBridge_For_Android']['share'](sharCfg);
         }catch(e){

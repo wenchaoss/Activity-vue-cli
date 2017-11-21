@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition :name="transitionName">
-      <router-view class="routerview" :list="list" :isApp="isApp" keep-alive/>
+      <router-view class="routerview" :list="list" :isApp="isApp" :useHashRout="useHashRout" :isDev="isDev" keep-alive/>
     </transition>
     <div class="warn"></div>
   </div>
@@ -19,18 +19,35 @@
         isApp: 0
       }
     },
+    computed: {
+      useHashRout: function() {
+        let u = navigator.userAgent;
+        let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(this.isApp && isiOS){
+          return false;
+        }
+        return true;
+      },
+      isDev: function() {
+        if(window.location.href.indexOf('dev')>-1){
+          return 'http://dev.m.soyoung.com'
+        }else{
+          return 'http://m.soyoung.com'
+        }
+      }
+    },
     created() {
       var self = this;
       this.ls_hash();
       $.post('/topic/naqili',{flag:1,url:window.location.href.split('#')[0].replace(/http:\/\/|https:\/\//g,'')},function(res){
-        $(".list").show()
+        // $(".list").show()
         self.list = res.dataList;
         self.isApp = res.isApp;
         window.shareDateIndex = res.shareData;
         window.shareDateSce = $.extend({deep:true},res.shareData)
         window.shareDateSce.shareContent = res.shareContent;
         window.shareDateSce.shareTitle = res.shareTitle;
-        window.shareDateSce.shareUrl = "http://dev.m.soyoung.com/topic/naqili?#/share?id="+self.$route.query.id;
+        window.shareDateSce.shareUrl = this.isDev + "/topic/naqili?#/share?id="+self.$route.query.id;
         if(self.$route.path == '/'){
           setShare(window.shareDateIndex)
         }else{
@@ -93,11 +110,17 @@
     watch: {
       '$route' (to, from) {
         if (to.path == '/') {
+          if(!this.useHashRout){
+            return;
+          }
           this.transitionName = 'slide-right';
           setShare(window.shareDateIndex)
         } else {
+          if(!this.useHashRout){
+            return;
+          }
           this.transitionName = 'slide-left';
-          window.shareDateSce.shareUrl = "http://dev.m.soyoung.com/topic/naqili?#/share?id="+this.$route.query.id;
+          window.shareDateSce.shareUrl = this.isDev + "/topic/naqili?#/share?id="+this.$route.query.id;
           setShare(window.shareDateSce)
         }
       }
@@ -168,6 +191,7 @@
     height: auto;
     padding-bottom: .4rem;
     border: .07rem solid transparent;
+    border-color: #a3d1e8;
     border-image: -webkit-linear-gradient( #a3d1e8, #6086e4) 7 7;
     border-image: -moz-linear-gradient( #a3d1e8, #6086e4) 7 7;
     border-image: linear-gradient( #a3d1e8, #6086e4) 7 7;

@@ -16,6 +16,10 @@ export default new Router({
       path:'/share',
       name: '分享页面',
       component: share
+    },
+    {
+      path:'*',
+      redirect: '/'
     }
   ]
 })

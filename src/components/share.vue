@@ -28,9 +28,9 @@
       <div class="toupiao" @click="toupiao_share(detail.act_id)">
         <img src="../assets/img/btn2.png" alt="">
       </div>
-      <router-link to="/" class="goback">
+      <div to="/" @click="goback" class="goback">
         <img src="../assets/img/goback.png" alt="">
-      </router-link>
+      </div>
       <div class="share" @click="goshare">
         <img src="../assets/img/sharebtn.png" alt="">
       </div>
@@ -56,7 +56,7 @@
         detail: {}
       }
     },
-    props: ['list','isApp'],
+    props: ['list','isApp','useHashRout'],
     computed: {
       sortList: function(){
         function compare(property){
@@ -155,6 +155,12 @@
               return;
           }
       },
+      goback: function() {
+        if(!this.useHashRout){
+          window.history.go(-1)
+        }
+        this.$router.push({path:'/'})
+      }
     }
   }
 
@@ -180,6 +186,7 @@
     height: auto;
     padding-bottom: .4rem;
     border: .07rem solid transparent;
+    border-color: #a3d1e8;
     border-image: -webkit-linear-gradient( #a3d1e8, #6086e4) 7 7;
     border-image: -moz-linear-gradient( #a3d1e8, #6086e4) 7 7;
     border-image: linear-gradient( #a3d1e8, #6086e4) 7 7;
