@@ -9,7 +9,7 @@
             <a href="javaScript:void(0)" @click="gohash" class="c3"></a>
         </div>
         <div class="wrap"><img src="../assets/img/bg1_01n.jpg" alt=""></div>
-        <div class="wrap"><img src="../assets/img/bg1_02n.jpg" alt=""></div>
+        <div class="wrap"><img src="../assets/img/bg1_02nn.jpg" alt=""></div>
         <div class="wrap"><img src="../assets/img/21.jpg" alt="">
             <a href="javaScript:void(0)" @click="gohash" class="c1"></a>
             <a href="javaScript:void(0)" @click="gohash" class="c2"></a>
