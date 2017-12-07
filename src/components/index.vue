@@ -115,6 +115,8 @@ export default {
           }
       },
       toupiao: function(item) {
+        $(".warn").fadeIn(100).text("活动已结束~").fadeOut(2000);
+        return;
         if(!voteLimit()){
           return;
         }
